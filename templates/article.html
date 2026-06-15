@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ record.label or 'Article' }} - Doodle Search{% endblock %}
+{% block content %}
+<div class="article-panel">
+    <div class="article-header">
+        <span class="article-source">Source: {{ record.source.title() }}</span>
+        {% if record.label %}<span class="article-label">Label: {{ record.label }}</span>{% endif %}
+        <a class="secondary-button" href="{{ url_for('search', q=record.label if record.label else '') }}">Search related</a>
+    </div>
+    <div class="article-body">
+        <h2>{{ record.label or record.source.title() }}</h2>
+        <p>{{ record.text | highlight(request.args.get('q', '')) | safe }}</p>
+    </article>
+    </div>
+    <div class="article-footer">
+        <a href="{{ url_for('home') }}">Back to search</a>
+    </div>
+</div>
+{% endblock %}

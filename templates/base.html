@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Doodle Search{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" onerror="this.onerror=null;this.href='../static/css/style.css'" />
+    <script defer src="{{ url_for('static', filename='js/autocomplete.js') }}" onerror="this.onerror=null;this.src='../static/js/autocomplete.js'"></script>
+    <!-- Fallbacks for Live Server / direct file previews -->
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <script defer src="../static/js/autocomplete.js"></script>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox" hidden />
+    <div class="page-shell">
+        <header class="page-header">
+            <div class="brand-row">
+                <a class="brand-link" href="{{ url_for('home') }}">
+                    <img class="brand-logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Doodle logo" />
+                    <div>
+                        <h1>Doodle Search</h1>
+                        <p>Fast search across your CSV text collections.</p>
+                    </div>
+                </a>
+                <label for="theme-toggle" class="theme-toggle" title="Toggle theme">
+                    <!-- moon icon -->
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
+                    </svg>
+                </label>
+            </div>
+        </header>
+        <main class="page-main">{% block content %}{% endblock %}</main>
+        <footer class="page-footer">
+            <p>Search engine built with Flask and BERT-style embeddings.</p>
+        </footer>
+    </div>
+    <script>
+      // Restore theme preference from localStorage
+      (function(){
+        const toggle = document.getElementById('theme-toggle');
+        if(!toggle) return;
+        const saved = localStorage.getItem('theme');
+        if(saved === 'dark') {
+          toggle.checked = true;
+        }
+        toggle.addEventListener('change', function(){
+          localStorage.setItem('theme', this.checked ? 'dark' : 'light');
+        });
+      })();
+    </script>
+</body>
+</html>

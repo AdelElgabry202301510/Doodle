@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Search results - Doodle Search{% endblock %}
+{% block content %}
+<div class="results-panel">
+    <div class="results-header">
+        <h2>Results for “{{ query|e }}”</h2>
+        <p>{{ results|length }} result{{ 's' if results|length != 1 }}</p>
+    </div>
+    {% if results %}
+        <div class="result-list">
+            {% for item in results %}
+                <article class="result-card">
+                    <div class="result-meta">
+                        <span class="result-source">{{ item.source.title() }}</span>
+                        {% if item.exact %}<span class="result-label">Label match</span>{% endif %}
+                        <span class="result-score">Score: {{ item.score | round(3) }}</span>
+                    </div>
+                    <h3><a href="{{ url_for('article', doc_id=item.id, q=query) }}">{{ item.title }}</a></h3>
+                    <p>{{ item.snippet | highlight(query) | safe }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>No results found. Try a broader query or a label name from the dataset.</p>
+            <a class="secondary-button" href="{{ url_for('home') }}">Back to home</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

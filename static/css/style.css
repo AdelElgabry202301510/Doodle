@@ -1,0 +1,324 @@
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #202124;
+  --muted: #5f6368;
+  --border: #dadce0;
+  --action: #1a73e8;
+  --action-contrast: #ffffff;
+}
+
+.dark-theme {
+  --bg: #202124;
+  --surface: #2c2d30;
+  --text: #e8eaed;
+  --muted: #9aa0a6;
+  --border: #3c3d41;
+  --action: #8ab4f8;
+  --action-contrast: #202124;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: transparent; /* page-shell will carry the background color */
+  color: var(--text);
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.page-header,
+.page-footer {
+  width: 100%;
+  padding: 24px 24px 0;
+}
+
+.page-header {
+  display: flex;
+  justify-content: center;
+}
+
+.brand-row {
+  width: min(1100px, 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.brand-row h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--text);
+}
+
+.brand-row p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.page-main {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 36px 24px 24px;
+  flex: 1;
+}
+
+.home-panel,
+.results-panel,
+.article-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Home page top logo and open search container */
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 12px 8px;
+}
+
+.home-top { text-align: center; margin-bottom: 16px; }
+.home-main-logo { width: 320px; height: auto; object-fit: contain; border-radius: 16px; margin: 0 auto 24px; display:block; }
+
+.search-card h2 {
+  margin: 0 0 20px;
+  font-size: 2rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: min(1100px, 96%);
+  max-width: 100%;
+}
+
+.search-form input[type='search'] {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 18px 20px;
+  font-size: 1.125rem;
+  outline: none;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.autocomplete-root { position: relative; display: flex; flex: 1 1 auto; width: 100%; }
+.autocomplete-list { position: absolute; left: 0; right: 0; top: calc(100% + 8px); list-style: none; margin: 0; padding: 6px 0; border: 1px solid var(--border); background: var(--surface); max-height: 320px; overflow:auto; border-radius:8px; box-shadow: 0 6px 20px rgba(0,0,0,0.12); z-index: 60; }
+.autocomplete-list li { padding: 10px 14px; cursor: pointer; color: var(--text); }
+.autocomplete-list li:hover { background: rgba(0,0,0,0.06); }
+
+.search-form input[type='search']:focus {
+  border-color: var(--action);
+  box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.1);
+}
+
+.search-button {
+  border: 0;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 999px;
+  background: var(--action);
+  color: var(--action-contrast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.search-button svg { display: block; width:20px; height:20px; }
+
+.hint-row {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.hint-row strong {
+  color: var(--text);
+}
+
+.result-list {
+  width: min(1000px, 100%);
+  display: grid;
+  gap: 16px;
+}
+
+.result-card,
+.article-body {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.result-card h3 {
+  margin: 0 0 12px;
+}
+
+.result-card h3 a {
+  text-decoration: none;
+  color: var(--action);
+}
+
+.result-card p,
+.article-body p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.result-meta,
+.article-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.result-source,
+.result-label,
+.article-source,
+.article-label,
+.result-score {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(26, 115, 232, 0.08);
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.result-score {
+  background: rgba(76, 175, 80, 0.12);
+}
+
+.article-body h2 {
+  margin-top: 0;
+}
+
+.article-footer {
+  margin-top: 24px;
+}
+
+.secondary-button {
+  display: inline-flex;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 12px 18px;
+  text-decoration: none;
+}
+
+.empty-state {
+  width: min(760px, 100%);
+  padding: 40px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+}
+
+.page-footer {
+  width: min(1100px, 100%);
+  margin: 0 auto 24px;
+  padding-top: 0;
+  color: var(--muted);
+}
+
+#theme-toggle {
+  position: absolute;
+  left: -9999px;
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.theme-toggle::after {
+  content: 'Dark';
+}
+
+/* dark theme variables when toggle checked */
+#theme-toggle:checked + .page-shell {
+  --bg: #202124;
+  --surface: #2c2d30;
+  --text: #e8eaed;
+  --muted: #9aa0a6;
+  --border: #3c3d41;
+  --action: #8ab4f8;
+  --action-contrast: #202124;
+}
+
+/* No text labels on the toggle; icon color will invert automatically via currentColor */
+
+@media (max-width: 720px) {
+  .search-card,
+  .result-list,
+  .empty-state {
+    width: 100%;
+  }
+  .search-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hide header brand (logo+title) on home page so only the theme icon remains; keep header visible */
+body.home .brand-link { display: none; }
+body.home .page-header { display: block; }

@@ -1,0 +1,6 @@
+Flask==3.0.0
+sentence-transformers==2.2.2
+numpy==1.24.3
+nltk==3.8.1
+qalsadi==0.4.1
+requests==2.31.0
