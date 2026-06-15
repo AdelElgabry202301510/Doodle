@@ -39,7 +39,7 @@ A **fast, semantic search engine** built with Flask and BERT-style embeddings. S
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/doodle-search.git
+   git clone https://github.com/AdelElgabry202301510/doodle-search.git
    cd doodle-search
    ```
 
@@ -86,12 +86,12 @@ To use Hugging Face Inference API instead of local embeddings:
 ```bash
 # Windows PowerShell
 $env:USE_HF_INFERENCE = "true"
-$env:HF_API_TOKEN = "your_hf_token_here"
+$env:HF_API_TOKEN = "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"
 python app.py
 
 # macOS/Linux
 export USE_HF_INFERENCE=true
-export HF_API_TOKEN=your_hf_token_here
+export HF_API_TOKEN=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
 python app.py
 ```
 
@@ -180,19 +180,6 @@ To add your own data, add a CSV file to the `data/` directory with a `text` or `
 
 ## 🔐 Environment Variables
 
-Optional configuration:
-
-```bash
-# Use Hugging Face Inference API for embeddings (default: false)
-USE_HF_INFERENCE=true
-
-# HF API token (required if USE_HF_INFERENCE=true)
-HF_API_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxx
-
-# Flask debug mode (default: false)
-FLASK_ENV=development
-```
-
 ---
 
 ## 🚢 Deployment
@@ -207,24 +194,6 @@ python app.py
 pip install gunicorn
 gunicorn -w 4 -b 0.0.0.0:5000 app:app
 ```
-
-### Docker (Optional)
-Create a `Dockerfile`:
-```dockerfile
-FROM python:3.10-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
-```
-
-Build and run:
-```bash
-docker build -t doodle-search .
-docker run -p 5000:5000 doodle-search
-```
-
 ---
 
 ## 🛣️ Future Improvements
@@ -261,8 +230,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **Adel** - Building intelligent search tools with Python & AI
 
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- Portfolio: [your-portfolio.com](https://your-portfolio.com)
+- GitHub: [@AdelElgabry202301510](https://github.com/AdelElgabry202301510)
 
 ---
 
@@ -270,7 +238,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 If you have questions or encounter issues:
 
-1. Check the [Issues](https://github.com/YOUR_USERNAME/doodle-search/issues) page
+1. Check the [Issues](https://github.com/AdelElgabry202301510/doodle-search/issues) page
 2. Open a new issue with details about your problem
 3. Include environment info: Python version, OS, error messages
 
@@ -305,7 +273,7 @@ If you want the app to use your Hugging Face-hosted models without downloading w
 1. Set environment variables before starting the app:
 
 ```powershell
-setx HF_API_TOKEN "<your_token>"
+setx HF_API_TOKEN "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"
 setx USE_HF_INFERENCE "true"
 ```
 
