@@ -80,25 +80,6 @@ A **fast, semantic search engine** built with Flask and BERT-style embeddings. S
 ### Toggle Theme
 Click the moon icon in the header to switch between light and dark modes. Your preference is saved automatically.
 
-### Using Remote Embeddings (Optional)
-To use Hugging Face Inference API instead of local embeddings:
-
-```bash
-# Windows PowerShell
-$env:USE_HF_INFERENCE = "true"
-$env:HF_API_TOKEN = "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"
-python app.py
-
-# macOS/Linux
-export USE_HF_INFERENCE=true
-export HF_API_TOKEN=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
-python app.py
-```
-
-Get your HF token from [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -267,18 +248,3 @@ Behavior summary:
 - If you *do* want the app to download from Hugging Face, tell me and I can add an explicit option to enable network model loading or call the Hugging Face Inference API (which may require an API token).
 
 Remote (no-download) semantic mode via Hugging Face Inference API
-
-If you want the app to use your Hugging Face-hosted models without downloading weights locally, enable the remote inference option:
-
-1. Set environment variables before starting the app:
-
-```powershell
-setx HF_API_TOKEN "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"
-setx USE_HF_INFERENCE "true"
-```
-
-2. On startup, if `USE_HF_INFERENCE` is true and `HF_API_TOKEN` is set, the app will call the Hugging Face Inference API's embeddings endpoint to compute embeddings remotely for documents and queries. No model files are downloaded locally.
-
-Notes:
-- Remote inference requires network access and consumes credits on Hugging Face (or requires appropriate plan). It may be slower than local inference and subject to rate limits.
-- For large corpora, embeddings are computed in batches at startup and cached in memory; you can add persistence if you want to avoid repeated embedding calls across restarts.
